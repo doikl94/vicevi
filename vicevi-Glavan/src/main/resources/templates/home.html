@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Home</title>
+    <style>
+        .table-hover {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .table-hover thead {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #23486e;
+            color: white;
+        }
+
+        .table-hover th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        .form-group button {
+            width: 50px;
+            height: 12px;
+        }
+        .form-inline{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th style = "width:5%">#</th>
+                    <th>Category</th>
+                    <th>Joke</th>
+                    <th style = "width:5%">Likes</th>
+                    <th style = "width:5%">Dislikes</th>
+                    <th style = "width:5%">Difference</th>
+                    <th style = "width:5%">Like/Dislike</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr th:each="joke : ${jokes.content}">
+                    <td th:text="${joke.id}"></td>
+                    <td th:text="${joke.category.getName()}"></td>
+                    <td th:text="${joke.content}"></td>
+                    <td th:text="${joke.likes}"></td>
+                    <td th:text="${joke.dislikes}"></td>
+                    <td th:text="${joke.difference}"></td>
+
+                    <td class="form-inline">
+                        <form th:action="@{/like}" method="post">
+                            <div class="form-group">
+                                <input type="hidden" th:value="${joke.id}" name="jokeId" />
+                                <button type="submit"><span class="oi oi-thumb-up"></span></button>
+                            </div>
+                        </form>
+                        <form th:action="@{/dislike}" method="post">
+                            <div class="form-group">
+                                <input type="hidden" th:value="${joke.id}" name="jokeId" />
+                                <button type="submit"><span class="oi oi-thumb-down"></span></button>
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+            <hr/>
+                <li class="nav-item"
+                    th:each="i : ${#numbers.sequence(0,(jokes.totalPages)-1)}">
+                    <a th:href="@{/(page=${i})}" th:text="${i}" class="nav-link"
+                       th:classappend="${currentPage == i} ? 'active' : ''"></a>
+                </li>
+
+
+</body>
+</html>

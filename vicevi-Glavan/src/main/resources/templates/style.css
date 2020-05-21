@@ -1,0 +1,26 @@
+        .table-hover {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .table-hover thead {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #23486e;
+            color: white;
+        }
+
+        .table-hover th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        .form-group button {
+            width: 50px;
+            height: 12px;
+        }
+        .form-inline{
+            text-align: center;
+        }

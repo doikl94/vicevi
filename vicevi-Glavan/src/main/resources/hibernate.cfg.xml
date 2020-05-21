@@ -13,15 +13,15 @@
         </property>
 
         <property name = "hibernate.connection.url">
-            jdbc:postgresql://localhost:5432/vicevi
+
         </property>
 
         <property name = "hibernate.connection.username">
-            postgres
+
         </property>
 
         <property name = "hibernate.connection.password">
-            koma1362456
+
         </property>
 
     </session-factory>
